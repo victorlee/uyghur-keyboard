@@ -421,15 +421,19 @@ textarea {
 <tr>
 <th style="width: 45%">
 <button onclick="copytext()">Copy text</button>
-<button onclick="bolor()">Bolor D.</button><br>
+<button onclick="anasoz()">Anasöz</button><br>
+<button onclick="eud()">English Uighur Dictonary</button><br>
 <button onclick="searchglosbe()">Glosbe</button>
 <button onclick="searchwikt()">Wiktionary</button>
 <script>
-function bolor() {
-  window.open("http://www.bolor-toli.com/dictionary/word?authenticity_token=selected_lang=4-1&search=" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+function anasoz() {
+  window.open("http://www.anasoz.com/?s=" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+}
+function eud() {
+  window.open("http://www.uighurdictionary.com/?s=" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
 }
 function searchglosbe() {
-  window.open("http://glosbe.com/mn/en/" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+  window.open("http://glosbe.com/ug/en/" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
 }
 function searchwikt() {
   window.open("https://en.wiktionary.org/wiki/" + document.getElementById('output_textarea').value + "#Mongolian", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
