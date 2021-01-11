@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uyghur keyboard</title>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+var conversion = {
+
+"q":"چ",
+"w":"ۋ",
+"e":"ې",
+"r":"ر",
+"t":"ت",
+"y":"ي",
+"u":"ۇ",
+"i":"ڭ",
+"o":"و",
+"p":"پ",
+"{":"»",
+"}":"«",
+
+"a":"ھ",
+"s":"س",
+"d":"د",
+"D":"ژ",
+"f":"ا",
+"F":"ف",
+"g":"ە",
+"G":"گ",
+"h":"ى",
+"H":"خ",
+"j":"ق",
+"J":"ج",
+"k":"ك",
+"K":"ۆ",
+"l":"ل",
+"L":"لا",
+";":"؛",
+
+"z":"ز",
+"x":"ش",
+"c":"غ",
+"v":"ۈ",
+"b":"ب",
+"n":"ن",
+"m":"م",
+",":"،",
+"\u002f":"ئ",
+"?":"؟",
+        };
+
+ var maxLength = Object.keys(conversion)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert (text) {
+    var converted = "";
+    var cur = 0;
+    while (cur < text.length) {
+      var testedPhoneme;
+      var symbol = undefined;
+      for (var length = maxLength; length > 0; length --) {
+        testedPhoneme = text.substr(cur, length);
+        if (conversion[testedPhoneme]) {
+          symbol = conversion[testedPhoneme];
+          break; // stop the loop
+        }
+      }
+      if (symbol) {
+        converted += symbol;
+        cur += testedPhoneme.length;
+      }
+      else {
+        converted += text[cur]
+        cur++;
+      }
+    }
+    return converted
+  }
+
+  function onInputTextChange(txt) {
+    var outputTextareaElem = document.getElementById("output_textarea");
+    var div = document.createElement("div");
+    var outputHtmlEntities = convert(txt);
+    div.innerHTML = outputHtmlEntities;
+    outputTextareaElem.value = div.innerText;
+  }
+
+function select() {
+  const input = document.getElementById('input_textarea');
+  input.focus();
+  input.select();
+}   
+function copytext() {
+  var copyText = document.getElementById("output_textarea");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+}
+
+$(function(){
+    $('.linked').scroll(function(){
+        $('.linked').scrollTop($(this).scrollTop());    
+    })
+})
+
+function down(event) {
+  var x = event.which || event.keyCode;
+  if ( x == 8 ) {
+  document.getElementById('back').style.backgroundColor = '#7ca';
+} else {
+  document.getElementById('back').style.backgroundColor = '#eee';
+}
+  var x = document.getElementById("demo");
+  if (event.shiftKey) {
+  document.getElementById('shift').style.backgroundColor = '#7ca';
+}
+  if (event.shiftKey) {
+  document.getElementById('shift2').style.backgroundColor = '#7ca';
+}
+}
+function press(event) {
+  var x = event.which || event.keyCode;
+  if (x == 96 || x == 126 ) {
+  document.getElementById('backtick').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('backtick').style.backgroundColor = '#eee';
+}
+  if (x == 49 || x == 33 ) {
+  document.getElementById('one').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('one').style.backgroundColor = '#eee';
+}
+  if (x == 50 || x == 64 ) {
+  document.getElementById('two').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('two').style.backgroundColor = '#eee';
+}
+  if (x == 51 || x == 35 ) {
+  document.getElementById('three').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('three').style.backgroundColor = '#eee';
+}
+  if (x == 52 || x == 36 ) {
+  document.getElementById('four').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('four').style.backgroundColor = '#eee';
+}
+  if (x == 53 || x == 37 ) {
+  document.getElementById('five').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('five').style.backgroundColor = '#eee';
+}
+  if (x == 54 || x == 94 ) {
+  document.getElementById('six').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('six').style.backgroundColor = '#eee';
+}
+  if (x == 55 || x == 38 ) {
+  document.getElementById('seven').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('seven').style.backgroundColor = '#eee';
+}
+  if (x == 56 || x == 42 ) {
+  document.getElementById('eight').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('eight').style.backgroundColor = '#eee';
+}
+  if (x == 57 || x == 40 ) {
+  document.getElementById('nine').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('nine').style.backgroundColor = '#eee';
+}
+  if (x == 48 || x == 41 ) {
+  document.getElementById('zero').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('zero').style.backgroundColor = '#eee';
+}
+  if (x == 45 || x == 95 ) {
+  document.getElementById('hypen').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('hypen').style.backgroundColor = '#eee';
+}
+  if (x == 61 || x == 43 ) {
+  document.getElementById('equal').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('equal').style.backgroundColor = '#eee';
+}
+  if (x == 81 || x == 113) {
+  document.getElementById('q').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('q').style.backgroundColor = '#eee';
+}
+if (x == 87 || x == 119) {
+  document.getElementById('w').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('w').style.backgroundColor = '#eee';
+}
+  if (x == 101 || x == 69) {
+  document.getElementById('e').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('e').style.backgroundColor = '#eee';
+}
+  if (x == 114 || x == 82) {
+  document.getElementById('r').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('r').style.backgroundColor = '#eee';
+}
+  if (x == 116 || x == 84) {
+  document.getElementById('t').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('t').style.backgroundColor = '#eee';
+}
+  if (x == 121 || x == 89) {
+  document.getElementById('y').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('y').style.backgroundColor = '#eee';
+}
+  if (x == 117 || x == 85) {
+  document.getElementById('u').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('u').style.backgroundColor = '#eee';
+}
+  if (x == 105 || x == 73) {
+  document.getElementById('i').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('i').style.backgroundColor = '#eee';
+}
+  if (x == 111 || x == 79) {
+  document.getElementById('o').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('o').style.backgroundColor = '#eee';
+}
+  if (x == 112 || x == 80) {
+  document.getElementById('p').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('p').style.backgroundColor = '#eee';
+}
+  if (x == 91 || x == 123) {
+  document.getElementById('lb').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('lb').style.backgroundColor = '#eee';
+}
+  if (x == 93 || x == 125) {
+  document.getElementById('rb').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('rb').style.backgroundColor = '#eee';
+}
+  if (x == 97 || x == 65 ) {
+  document.getElementById('a').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('a').style.backgroundColor = '#eee';
+}
+  if (x == 115 || x == 83 ) {
+  document.getElementById('s').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('s').style.backgroundColor = '#eee';
+}
+  if (x == 100 || x == 68 ) {
+  document.getElementById('d').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('d').style.backgroundColor = '#eee';
+}
+  if (x == 102 || x == 70 ) {
+  document.getElementById('f').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('f').style.backgroundColor = '#bbb';
+}
+  if (x == 103 || x == 71 ) {
+  document.getElementById('g').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('g').style.backgroundColor = '#eee';
+}
+  if (x == 104 || x == 72 ) {
+  document.getElementById('h').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('h').style.backgroundColor = '#eee';
+}
+  if (x == 106 || x == 74 ) {
+  document.getElementById('j').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('j').style.backgroundColor = '#bbb';
+}  if (x == 107 || x == 75 ) {
+  document.getElementById('k').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('k').style.backgroundColor = '#eee';
+}  if (x == 108 || x == 76 ) {
+  document.getElementById('l').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('l').style.backgroundColor = '#eee';
+}  if (x == 59 || x == 58 ) {
+  document.getElementById('semicolon').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('semicolon').style.backgroundColor = '#eee';
+}  if (x == 39 || x == 34 ) {
+  document.getElementById('apostrophe').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('apostrophe').style.backgroundColor = '#eee';
+}
+  if (x == 13 ) {
+  document.getElementById('enter').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('enter').style.backgroundColor = '#eee';
+}
+  if (x == 122 || x == 90 ) {
+  document.getElementById('z').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('z').style.backgroundColor = '#eee';
+}
+  if (x == 120 || x == 88 ) {
+  document.getElementById('x').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('x').style.backgroundColor = '#eee';
+}
+  if (x == 99 || x == 67 ) {
+  document.getElementById('c').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('c').style.backgroundColor = '#eee';
+}
+  if (x == 118 || x == 86 ) {
+  document.getElementById('v').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('v').style.backgroundColor = '#eee';
+}
+  if (x == 98 || x == 66 ) {
+  document.getElementById('b').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('b').style.backgroundColor = '#eee';
+}
+  if (x == 110 || x == 78 ) {
+  document.getElementById('n').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('n').style.backgroundColor = '#eee';
+}
+  if (x == 109 || x == 77 ) {
+  document.getElementById('m').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('m').style.backgroundColor = '#eee';
+}
+  if (x == 44 || x == 60 ) {
+  document.getElementById('comma').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('comma').style.backgroundColor = '#eee';
+}  if (x == 46 || x == 62 ) {
+  document.getElementById('period').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('period').style.backgroundColor = '#eee';
+}  if (x == 47 || x == 63 ) {
+  document.getElementById('slash').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('slash').style.backgroundColor = '#eee';
+}
+  if (x == 32 ) {
+  document.getElementById('space').style.backgroundColor = '#f55';
+} else {
+  document.getElementById('space').style.backgroundColor = '#eee';
+}
+}
+function up(event) {
+  if (event.shiftKey){} else {
+  document.getElementById('shift').style.backgroundColor = '#eee';
+}
+  if (event.shiftKey){} else {
+  document.getElementById('shift2').style.backgroundColor = '#eee';
+}
+}
+    </script>
+    
+<style>
+@import url(https://victorlee.github.io/fonts/stylesheet.css);
+
+
+html {
+  font-family:arial;
+  text-align: center;
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+td, th {
+  border: 1px solid #AAA;
+  text-align: center;
+  padding: 1px;
+}
+textarea {
+    font-size: 1.4rem;
+    width: 96%;
+} 
+.note {
+  border: 1px solid #DDD;
+  width: 10%;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.box {
+font-size: 2.0rem;
+display: inline-block;
+line-height: 1.0;
+width: 50px;
+border: 1px solid;
+min-height: 30px;
+padding: 3px;
+background-color: #eee;
+border-radius: 5px;
+}
+</style>
+</head>
+<body>   
+<h1 class="text-center">Uyghur Cyrillic keyboard</h1>
+<table>
+<thead>
+<tr>
+<th style="width: 45%">
+<button onclick="copytext()">Copy text</button>
+<button onclick="bolor()">Bolor D.</button><br>
+<button onclick="searchglosbe()">Glosbe</button>
+<button onclick="searchwikt()">Wiktionary</button>
+<script>
+function bolor() {
+  window.open("http://www.bolor-toli.com/dictionary/word?authenticity_token=selected_lang=4-1&search=" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+}
+function searchglosbe() {
+  window.open("http://glosbe.com/mn/en/" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+}
+function searchwikt() {
+  window.open("https://en.wiktionary.org/wiki/" + document.getElementById('output_textarea').value + "#Mongolian", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+}
+</script>
+</th>
+<th style="width: 45%">
+<button onclick="select('input_textarea')">Select all</button>
+<button onclick="document.getElementById('input_textarea').value = ''">Clear</button>
+</th>
+</thead>
+<tbody>
+<tr>
+<td>
+<textarea dir="rtl" rows="10" placeholder="output" id="output_textarea" class="linked" style="font-family: ALKATIP Basma Tom"></textarea> 
+</td>
+<td>
+<textarea
+id="input_textarea"
+autofocus=""
+placeholder="input"
+rows="10"
+oninput="onInputTextChange(this.value)"
+onkeydown="down(event)"
+onkeypress="press(event)"
+onkeyup="up(event)"
+spellcheck="false"
+class="linked"
+style="line-height: 1.8"
+></textarea>   
+</td>
+</tr>
+</tbody>
+</table><br>
+<div class="body" align="center" style="line-height: 2.4;">
+<span class="box" id="backtick">`</span>
+<span class="box" id="one">1</span>
+<span class="box" id="two">2</span>
+<span class="box" id="three">3</span>
+<span class="box" id="four">4</span>
+<span class="box" id="five">5</span>
+<span class="box" id="six">6</span>
+<span class="box" id="seven">7</span>
+<span class="box" id="eight">8</span>
+<span class="box" id="nine">9</span>
+<span class="box" id="zero">0</span>
+<span class="box" id="hypen">-</span>
+<span class="box" id="equal">+</span>
+<span class="box" id="back" style="width: 80px;">Back</span><br>
+<span class="box" id="q">چ</span>
+<span class="box" id="w">ۋ</span>
+<span class="box" id="e">ې</span>
+<span class="box" id="r">ر</span>
+<span class="box" id="t">ت</span>
+<span class="box" id="y">ي</span>
+<span class="box" id="u">ۇ</span>
+<span class="box" id="i">ڭ</span>
+<span class="box" id="o">و</span>
+<span class="box" id="p">پ</span>
+<span class="box" id="lb">]»</span>
+<span class="box" id="rb">[«</span><br>
+<span class="box" id="caps" style="width: 90px;">Caps</span>
+<span class="box" id="a">ھ</span>
+<span class="box" id="s">س</span>
+<span class="box" id="d">د ژ</span>
+<span class="box" id="f" style="background-color:#bbb;">ا ف</span>
+<span class="box" id="g">ە گ</span>
+<span class="box" id="h">ى خ</span>
+<span class="box" id="j" style="background-color:#bbb;">ق ج</span>
+<span class="box" id="k">ك ۆ</span>
+<span class="box" id="l">ل لا</span>
+<span class="box" id="semicolon">؛</span>
+<span class="box" id="apostrophe">'</span>
+<span class="box" id="enter" style="width: 90px;">Enter</span><br>
+<span class="box" id="shift" style="width: 120px;">Shift</span>
+<span class="box" id="z">ز</span>
+<span class="box" id="x">ش</span>
+<span class="box" id="c">غ</span>
+<span class="box" id="v">ۈ</span>
+<span class="box" id="b">ب</span>
+<span class="box" id="n">ن</span>
+<span class="box" id="m">م</span>
+<span class="box" id="comma">،</span>
+<span class="box" id="period">.</span>
+<span class="box" id="slash">ئ</span>
+<span class="box" id="shift2" style="width: 120px;">Shift</span><br>
+<span class="box" id="space" style="width: 360px;">​</span>
+</div>
+    <a href="beta.html">beta</a> <a href="practice.html">Practice typing with Uyghur keyboard!</a>
+
+<script>
+var input = document.getElementById("input_textarea");
+input.addEventListener("keyup", function(event) {
+if (event.getModifierState("CapsLock")) {
+  document.getElementById('caps').style.backgroundColor = '#7ca';
+} else {
+  document.getElementById('caps').style.backgroundColor = '#eee';
+}
+});
+</script>
+</body>
+</html>
